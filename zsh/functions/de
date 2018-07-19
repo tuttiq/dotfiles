@@ -1,0 +1,53 @@
+# Docker functions
+drun() {
+  if [[ $# > 1 ]]; then
+    docker-compose run $@
+  else
+    echo "You need to specify a container and a command"
+  fi
+}
+
+dlogs() {
+  if [[ $# > 0 ]]; then
+    docker-compose logs $@
+  else
+    echo "You need to specify a container"
+  fi
+}
+
+# Bundle exec commands
+derc() {
+  if [[ $# > 0 ]]; then
+    app="$1"; shift
+    docker-compose run $app bundle exec rails console $@
+  else
+    echo "You need to specify a container"
+  fi
+}
+
+derspec() {
+  if [[ $# > 0 ]]; then
+    app="$1"; shift
+    docker-compose run $app bundle exec rspec $@
+  else
+    echo "You need to specify a container"
+  fi
+}
+
+deyarn() {
+  if [[ $# > 1 ]]; then
+    app="$1"; shift
+    docker-compose run $app yarn run $@
+  else
+    echo "You need to specify a container and a yarn command"
+  fi
+}
+
+derake() {
+  if [[ $# > 1 ]]; then
+    app="$1"; shift
+    docker-compose run $app bundle exec rake $@
+  else
+    echo "You need to specify a container and rake arguments"
+  fi
+}
