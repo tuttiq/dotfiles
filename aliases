@@ -34,7 +34,7 @@ alias berc="bundle exec rails console"
 alias berdb="bundle exec rails dbconsole"
 alias berspec="bundle exec rspec"
 alias h='http'
-alias dup="docker-compose up -D"
+alias dup="docker-compose up -d"
 
 # git
 alias gcb="git branch | grep -v 'master' | xargs git branch -D"
