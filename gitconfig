@@ -2,7 +2,7 @@
 	templatedir = ~/.git_template
 [user]
   username = 'tuttiq'
-  email = 'tuane.quintella@quipper.com'
+  email = 'q.tuane@gmail.com'
   name = 'Tutti Quintella'
 [push]
   default = current
