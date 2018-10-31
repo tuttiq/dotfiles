@@ -492,8 +492,8 @@ bot "Dock & Dashboard"
 running "Enable highlight hover effect for the grid view of a stack (Dock)"
 defaults write com.apple.dock mouse-over-hilite-stack -bool true;ok
 
-running "Set the icon size of Dock items to 36 pixels"
-defaults write com.apple.dock tilesize -int 36;ok
+running "Set the icon size of Dock items to 42 pixels"
+defaults write com.apple.dock tilesize -int 42;ok
 
 running "Change minimize/maximize window effect to scale"
 defaults write com.apple.dock mineffect -string "scale";ok
@@ -774,15 +774,15 @@ running "Set my personal wallpaper"
 ./mac_scripts/set_wallpaper
 ok
 
-running "Setting karabiner-elements config"
-mkdir -p $HOME/.config/karabiner/
-cp $HOME/dotfiles/karabiner.json $HOME/.config/karabiner/
-ok
+# running "Setting karabiner-elements config"
+# mkdir -p $HOME/.config/karabiner/
+# cp $HOME/dotfiles/karabiner.json $HOME/.config/karabiner/
+# ok
 
-running "Setting BetterTouchTool config"
-mkdir -p $HOME/Library/Preferences/
-cp $HOME/dotfiles/plists/com.hegenberg.BetterTouchTool.plist $HOME/Library/Preferences/
-ok
+# running "Setting BetterTouchTool config"
+# mkdir -p $HOME/Library/Preferences/
+# cp $HOME/dotfiles/plists/com.hegenberg.BetterTouchTool.plist $HOME/Library/Preferences/
+# ok
 
 ###############################################################################
 # Kill affected applications                                                  #
