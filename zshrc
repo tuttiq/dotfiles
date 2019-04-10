@@ -141,7 +141,7 @@ command_exists () {
 }
 
 # go
-export GOPATH=$HOME/code/go
+export GOPATH=$HOME/Projects/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOPATH
 export PATH=$PATH:$GOBIN
@@ -218,3 +218,7 @@ export df=$HOME/dotfiles
 echo -e "\033]50;SetProfile=etdev-default\a"
 
 typeset -U path PATH
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+eval "$(pyenv virtualenv-init -)"
