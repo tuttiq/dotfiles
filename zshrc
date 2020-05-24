@@ -170,6 +170,9 @@ if [[ -d "${RBENV_ROOT}" ]]; then
   eval "$(rbenv init -)"
 fi
 
+# ruby config for openssl
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+
 # tmuxinator
 if [ -e $HOME/.bin/tmuxinator.zsh ]; then
   source $HOME/.bin/tmuxinator.zsh
@@ -211,6 +214,9 @@ enable_ruby_warnings() {
 # useful variables
 export df=$HOME/dotfiles
 
+export LDFLAGS="-L/usr/local/opt/readline/lib"
+export CPPFLAGS="-I/usr/local/opt/readline/include"
+
 # add coreutils
 #export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 
@@ -218,7 +224,26 @@ export df=$HOME/dotfiles
 echo -e "\033]50;SetProfile=etdev-default\a"
 
 typeset -U path PATH
+
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 eval "$(pyenv virtualenv-init -)"
+
+# heroku autocomplete setup
+HEROKU_AC_ZSH_SETUP_PATH=/Users/tuttiq/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/tuttiq/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/tuttiq/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/tuttiq/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/tuttiq/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
