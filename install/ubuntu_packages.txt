@@ -103,7 +103,6 @@ tesseract
 texi2html
 the_silver_searcher
 tidy-html5
-tmux
 tree
 unibilium
 unrar

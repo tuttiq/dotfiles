@@ -173,11 +173,6 @@ fi
 # ruby config for openssl
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
-# tmuxinator
-if [ -e $HOME/.bin/tmuxinator.zsh ]; then
-  source $HOME/.bin/tmuxinator.zsh
-fi
-
 # local zshrc
 if [ -e $HOME/.zshrc.local ]; then
   source $HOME/.zshrc.local
@@ -220,15 +215,7 @@ export CPPFLAGS="-I/usr/local/opt/readline/include"
 # add coreutils
 #export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 
-# set iTerm profile to etdev-default
-echo -e "\033]50;SetProfile=etdev-default\a"
-
 typeset -U path PATH
-
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
-eval "$(pyenv virtualenv-init -)"
 
 # heroku autocomplete setup
 HEROKU_AC_ZSH_SETUP_PATH=/Users/tuttiq/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;

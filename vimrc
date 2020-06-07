@@ -129,9 +129,6 @@ map <Leader>l :call RunLastSpec()<CR>
 map <Leader>ta :call RunAllSpecs()<CR>
 
 "let g:rspec_command = "!rspec {spec}"
-let g:rspec_runner = "os_x_iterm"
-"let g:rspec_command = 'call Send_to_Tmux("spring rspec {spec}\n")'
-let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
@@ -161,16 +158,7 @@ colorscheme solarized
 set smartcase
 set ignorecase
 
-" For tmux-navigator
-let g:tmux_navigator_no_mappings = 1
-
-nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
-"nnoremap <silent> <C-w> :TmuxNavigatePrevious<cr>
-
-" Switch quickly between buffers (matches tmux window switching)
+" Switch quickly between buffers
 map <C-w>n :bnext<cr>
 map <C-w>p :bprevious<cr>
 
