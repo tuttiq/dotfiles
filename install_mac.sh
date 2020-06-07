@@ -85,7 +85,7 @@ if [[ $? != 0 ]]; then
   action "installing brew-cask"
   require_brew caskroom/cask/brew-cask
 fi
-brew tap caskroom/versions > /dev/null 2>&1
+brew tap homebrew/cask-versions > /dev/null 2>&1
 ok
 
 # skip those GUI clients, git command-line all the way
@@ -153,27 +153,9 @@ env RCRC=$HOME/dotfiles/rcrc rcup
 bot "setting custom zsh prompt..."
 /bin/cp zsh/agnoster.zsh-theme $HOME/.zprezto/modules/prompt/external/agnoster/agnoster.zsh-theme
 
-bot "installing fonts"
+bot "installing powerline fonts"
+git clone https://github.com/powerline/fonts.git
 ./fonts/install.sh
-brew tap caskroom/fonts
-# Font Awesome 5 Brands-Regular-400
-[[ $(ls $HOME/Library/Fonts | grep -ie 'font.*awesome.*5') ]] || require_cask font-fontawesome
-# Droid+Sans+Mono+Awesome
-[[ $(ls $HOME/Library/Fonts | grep -ie 'droid.*sans.*mono.*awesome') ]] || require_cask font-awesome-terminal-fonts
-# Hack-Regular
-[[ $(ls $HOME/Library/Fonts | grep -ie 'hack-regular') ]] || require_cask font-hack
-# Inconsolata-dz
-[[ $(ls $HOME/Library/Fonts | grep -ie 'inconsolata-dz') ]] || require_cask font-inconsolata-dz-for-powerline
-# Inconsolata-g
-[[ $(ls $HOME/Library/Fonts | grep -ie 'inconsolata-g') ]] || require_cask font-inconsolata-g-for-powerline
-# Inconsolata for Powerline
-[[ $(ls $HOME/Library/Fonts | grep -ie 'inconsolata.*for.*powerline') ]] || require_cask font-inconsolata-for-powerline
-# RobotoMono-Regular
-[[ $(ls $HOME/Library/Fonts | grep -ie 'robotomono-regular') ]] || require_cask font-roboto-mono
-# Roboto Mono Medium for Powerline
-[[ $(ls $HOME/Library/Fonts | grep -ie 'robot.*mono.*medium.*for.*powerline') ]] || require_cask font-roboto-mono-for-powerline
-# Source Code Pro for Powerline
-[[ $(ls $HOME/Library/Fonts | grep -ie 'source.*code.*pro.*for.*powerline') ]] || require_cask font-source-code-pro
 ok
 
 bot "installing hub"
@@ -344,7 +326,7 @@ sudo systemsetup -setcomputersleep Off > /dev/null;ok
 running "Check for software updates daily, not just once per week"
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1;ok
 
-# running "Disable Notification Center and remove the menu bar icon"
+running "Disable Notification Center and remove the menu bar icon"
 launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist > /dev/null 2>&1;ok
 
 running "Disable smart quotes as they’re annoying when typing code"
@@ -584,31 +566,6 @@ running "Add a context menu item for showing the Web Inspector in web views"
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true;ok
 
 ###############################################################################
-bot "Configuring Mail"
-###############################################################################
-
-running "Disable send and reply animations in Mail.app"
-defaults write com.apple.mail DisableReplyAnimations -bool true
-defaults write com.apple.mail DisableSendAnimations -bool true;ok
-
-running "Copy email addresses as 'foo@example.com' instead of 'Foo Bar <foo@example.com>' in Mail.app"
-defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false;ok
-
-running "Add the keyboard shortcut ⌘ + Enter to send an email in Mail.app"
-defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" -string "@\\U21a9";ok
-
-running "Display emails in threaded mode, sorted by date (oldest at the top)"
-defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreadedMode" -string "yes"
-defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortedDescending" -string "yes"
-defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -string "received-date";ok
-
-running "Disable inline attachments (just show the icons)"
-defaults write com.apple.mail DisableInlineAttachmentViewing -bool true;ok
-
-running "Disable automatic spell checking"
-defaults write com.apple.mail SpellCheckingBehavior -string "NoSpellCheckingEnabled";ok
-
-###############################################################################
 bot "Spotlight"
 ###############################################################################
 
@@ -642,59 +599,6 @@ running "Make sure indexing is enabled for the main volume"
 sudo mdutil -i on / > /dev/null;ok
 #running "Rebuild the index from scratch"
 #sudo mdutil -E / > /dev/null;ok
-
-###############################################################################
-bot "Terminal & iTerm2"
-###############################################################################
-
-# running "Only use UTF-8 in Terminal.app"
-# defaults write com.apple.terminal StringEncodings -array 4;ok
-#
-# running "Use a modified version of the Solarized Dark theme by default in Terminal.app"
-# TERM_PROFILE='Solarized Dark xterm-256color';
-# CURRENT_PROFILE="$(defaults read com.apple.terminal 'Default Window Settings')";
-# if [ "${CURRENT_PROFILE}" != "${TERM_PROFILE}" ]; then
-# 	open "./configs/${TERM_PROFILE}.terminal";
-# 	sleep 1; # Wait a bit to make sure the theme is loaded
-# 	defaults write com.apple.terminal 'Default Window Settings' -string "${TERM_PROFILE}";
-# 	defaults write com.apple.terminal 'Startup Window Settings' -string "${TERM_PROFILE}";
-# fi;
-
-#running "Enable “focus follows mouse” for Terminal.app and all X11 apps"
-# i.e. hover over a window and start `typing in it without clicking first
-defaults write com.apple.terminal FocusFollowsMouse -bool true
-#defaults write org.x.X11 wm_ffm -bool true;ok
-running "Installing the Patched Solarized Dark theme for iTerm (opening file)"
-open "./configs/solarized-dark-bg.itermcolors";ok
-
-#running "Don’t display the annoying prompt when quitting iTerm"
-#defaults write com.googlecode.iterm2 PromptOnQuit -bool false;ok
-running "hide tab title bars"
-defaults write com.googlecode.iterm2 HideTab -bool true;ok
-running "set system-wide hotkey to show/hide iterm with ^\`"
-defaults write com.googlecode.iterm2 Hotkey -bool true;ok
-running "hide pane titles in split panes"
-defaults write com.googlecode.iterm2 ShowPaneTitles -bool false;ok
-running "animate split-terminal dimming"
-defaults write com.googlecode.iterm2 AnimateDimming -bool true;ok
-defaults write com.googlecode.iterm2 HotkeyChar -int 96;
-defaults write com.googlecode.iterm2 HotkeyCode -int 50;
-defaults write com.googlecode.iterm2 FocusFollowsMouse -int 1;
-defaults write com.googlecode.iterm2 HotkeyModifiers -int 262401;
-#running "setting fonts"
-#defaults write com.googlecode.iterm2 "Normal Font" -string "Hack-Regular 12";
-#defaults write com.googlecode.iterm2 "Non Ascii Font" -string "RobotoMonoForPowerline-Regular 12";
-ok
-
-running "reading iterm settings"
-defaults read -app iTerm > /dev/null 2>&1;
-ok
-
-running "copying iterm profile"
-mkdir -p "$HOME/Library/Application Support/iTerm/DynamicProfiles/"
-cp "./plists/etdev-iterm-default-profile.plist" "$HOME/Library/Application Support/iTerm/DynamicProfiles/"
-mkdir -p "$HOME/Library/Application Support/iTerm2/DynamicProfiles/"
-cp "./plists/etdev-iterm-default-profile.plist" "$HOME/Library/Application Support/iTerm2/DynamicProfiles/"
 
 ###############################################################################
 bot "Time Machine"
@@ -754,19 +658,6 @@ running "Enable Debug Menu in the Mac App Store"
 defaults write com.apple.appstore ShowDebugMenu -bool true;ok
 
 ###############################################################################
-bot "Messages"
-###############################################################################
-
-running "Disable automatic emoji substitution (i.e. use plain text smileys)"
-defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false;ok
-
-running "Disable smart quotes as it’s annoying for messages that contain code"
-defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false;ok
-
-running "Disable continuous spell checking"
-defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false;ok
-
-###############################################################################
 # My personal additions
 ###############################################################################
 
@@ -774,15 +665,9 @@ running "Set my personal wallpaper"
 ./mac_scripts/set_wallpaper
 ok
 
-# running "Setting karabiner-elements config"
-# mkdir -p $HOME/.config/karabiner/
-# cp $HOME/dotfiles/karabiner.json $HOME/.config/karabiner/
-# ok
-
-# running "Setting BetterTouchTool config"
-# mkdir -p $HOME/Library/Preferences/
-# cp $HOME/dotfiles/plists/com.hegenberg.BetterTouchTool.plist $HOME/Library/Preferences/
-# ok
+running "Set VSCode settings"
+./mac_scripts/vscode_settings
+ok
 
 ###############################################################################
 # Kill affected applications                                                  #
@@ -794,4 +679,4 @@ for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
   killall "${app}" > /dev/null 2>&1
 done
 
-bot "All done! Kill this terminal and launch iTerm"
+bot "All done! Kill this terminal and launch it again"

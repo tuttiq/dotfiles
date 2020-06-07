@@ -1,7 +1,7 @@
 {
   "name": "dotfiles",
   "version": "0.0.1",
-  "description": "etdev dotfiles for macos",
+  "description": "tuttiq dotfiles for macos",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,7 +9,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/etdev/dotfiles.git"
+    "url": "git+https://github.com/tuttiq/dotfiles.git"
   },
   "keywords": [
     "dotfiles",
@@ -18,16 +18,15 @@
     "automation",
     "setup",
     "developer",
-    "iterm",
     "commandline",
     "bootstrap"
   ],
-  "author": "Eric Turner <ericturner@gmail.com>",
+  "author": "Tutti Quintella <q.tuane@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/etdev/dotfiles/issues"
+    "url": "https://github.com/tuttiq/dotfiles/issues"
   },
-  "homepage": "https://github.com/etdev/dotfiles#readme",
+  "homepage": "https://github.com/tuttiq/dotfiles#readme",
   "dependencies": {
     "inquirer": "1.0.2",
     "node-emoji": "1.3.0",

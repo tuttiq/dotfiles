@@ -2,8 +2,7 @@
   "editor.tabSize": 2,
   "editor.minimap.enabled": false,
   "git.autofetch": true,
-  "terminal.external.osxExec": "iTerm.app",
-  "terminal.integrated.fontFamily": "Roboto Mono Medium for Powerline",
+  "terminal.integrated.fontFamily": "Inconsolata-g for Powerline",
   "workbench.colorCustomizations": {
       "terminal.ansiBlack": "#1c1c1c",
       "terminal.ansiRed": "#dc322f",
