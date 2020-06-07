@@ -1,6 +1,6 @@
 # Tuttiq's Dotfiles
 
-Completely stolen from [etdev's dotfiles](https://github.com/etdev/dotfiles), with minor changes by me.
+Inspired by [etdev's dotfiles](https://github.com/etdev/dotfiles), with a bunch of changes by me.
 
 ### Install
 
@@ -39,6 +39,6 @@ To extend your `git` hooks, create executable scripts in
 
 ### Thanks
 
-- These dotfiles are completely stolen from [Etdev's Dotfiles](https://github.com/etdev/dotfiles).
+- These dotfiles are forked from [Etdev's Dotfiles](https://github.com/etdev/dotfiles).
   - That was originally forked from [Thoughtbot Dotfiles](https://github.com/thoughtbot/dotfiles).
   - The install script is from [Adam Eivy's Dotfiles](https://github.com/atomantic/dotfiles).
