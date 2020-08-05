@@ -14,5 +14,10 @@
       "terminal.ansiWhite": "#eee8d5",
       "terminal.background": "#1c1c1c",
       "terminal.foreground": "#929292"
-  }
+  },
+  "git.confirmSync": false,
+  "files.trimTrailingWhitespace": true,
+  "editor.scrollBeyondLastLine": false,
+  "editor.formatOnSave": true,
+  "files.insertFinalNewline": true
 }
