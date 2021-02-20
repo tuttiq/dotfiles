@@ -4,20 +4,44 @@
   "git.autofetch": true,
   "terminal.integrated.fontFamily": "Inconsolata-g for Powerline",
   "workbench.colorCustomizations": {
-      "terminal.ansiBlack": "#1c1c1c",
-      "terminal.ansiRed": "#dc322f",
-      "terminal.ansiGreen": "#859901",
-      "terminal.ansiYellow": "#b58901",
-      "terminal.ansiBlue": "#268bd2",
-      "terminal.ansiMagenta": "#929292",
-      "terminal.ansiCyan": "#2aa198",
-      "terminal.ansiWhite": "#eee8d5",
-      "terminal.background": "#1c1c1c",
-      "terminal.foreground": "#929292"
+    "terminal.ansiBlack": "#1c1c1c",
+    "terminal.ansiRed": "#dc322f",
+    "terminal.ansiGreen": "#859901",
+    "terminal.ansiYellow": "#b58901",
+    "terminal.ansiBlue": "#268bd2",
+    "terminal.ansiMagenta": "#929292",
+    "terminal.ansiCyan": "#2aa198",
+    "terminal.ansiWhite": "#eee8d5",
+    "terminal.background": "#1c1c1c",
+    "terminal.foreground": "#929292"
   },
   "git.confirmSync": false,
   "files.trimTrailingWhitespace": true,
   "editor.scrollBeyondLastLine": false,
-  "editor.formatOnSave": true,
-  "files.insertFinalNewline": true
+  "files.insertFinalNewline": true,
+  "files.associations": {
+    "*.html.erb": "html"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "solargraph.autoformat": true,
+  "solargraph.diagnostics": true,
+  "solargraph.formatting": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "vetur.format.defaultFormatter.js": "prettier-eslint",
+  "window.zoomLevel": 0,
+  "dart.flutterSdkPath": "/Users/tuttiq/flutter",
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.rulers": [
+      80
+    ],
+    "editor.selectionHighlight": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": false
+  }
 }
